@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		#tryCanvas{
+			border: 1px solid black;
+			background-color: lightGray;
+		}
+		#rectangleConvas, #linesConvas, #linesCap{
+			border: 1px solid black;
+		}
+	</style>
+	<script type="text/javascript" src="jquery-3.1.0.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			var canvas = document.getElementById("tryCanvas");
+			var ctx = canvas.getContext("2d");
+			ctx.fillStyle = "green";
+			ctx.fillRect(10,10,150,50);
+
+			ctx.strokeStyle = "red";
+			ctx.strokeRect(210,10, 150, 50);
+
+			ctx.strokeStyle = "yellow";
+			ctx.fillStyle = "red";
+			ctx.lineWidth = 10;
+			ctx.fillRect(410, 10, 150, 50);
+			ctx.strokeRect(410, 10, 150, 50);
+		});
+	</script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			var canvas = document.getElementById("rectangleConvas");
+			if (canvas && canvas.getContext) {
+				var ctx = canvas.getContext("2d");
+				ctx.strokeStyle = "blue";
+				ctx.lineWidth = 5;
+				ctx.strokeRect(25, 25, 100, 50);
+
+				ctx.fillStyle = "black";
+				ctx.fillRect(150, 25, 100, 50);
+
+				ctx.fillStyle = "orange";
+				ctx.strokeStyle = "black";
+				ctx.lineWidth = 10;
+				ctx.fillRect(275, 25, 100, 50);
+				ctx.strokeRect(275, 25, 100, 50);
+
+				ctx.clearRect(0,50, 600, 10);
+
+			}
+		});
+	</script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			var canvas = document.getElementById("linesConvas");
+			if (canvas && canvas.getContext) {
+				var ctx = canvas.getContext("2d");
+				for (var i = 0; i < 15; i++) {
+					ctx.beginPath();
+					ctx.lineWidth = i + 1;
+					ctx.moveTo(25, 25+i*20);
+					ctx.lineTo(575, 25+i*20);
+					ctx.stroke();
+				}
+
+			}
+		});
+	</script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			var canvas = document.getElementById("linesCap");
+			if (canvas && canvas.getContext) {
+				var ctx = canvas.getContext("2d");
+				ctx.lineWidth = 25;
+				ctx.strokeStyle = "Red";
+				ctx.beginPath();
+				
+				ctx.lineCap = "butt"
+				ctx.moveTo(25, 50);
+				ctx.lineTo(500, 50);
+				ctx.stroke();
+
+
+				ctx.beginPath();;
+				ctx.lineCap = "round"
+				ctx.moveTo(25, 100);
+				ctx.lineTo(500, 100);
+				ctx.stroke();
+
+				ctx.beginPath();
+				ctx.lineCap = "square"
+				ctx.moveTo(25, 150);
+				ctx.lineTo(500, 150);
+				ctx.stroke();
+			}
+		});
+	</script>
+</head>
+<body>
+	<p>Try canvas</p>
+	<canvas id="tryCanvas" height="200" width="600">
+		Your brouwser not support canvas.
+	</canvas>
+	<p>Rectangles canvas</p>
+	<canvas id="rectangleConvas" height="200" width="600">
+		Your brouwser not support canvas.
+	</canvas>
+	<p>Lines canvas</p>
+	<canvas id="linesConvas" height="400" width="600">
+		Your brouwser not support canvas.
+	</canvas>
+	<p>Lines cap canvas</p>
+	<canvas id="linesCap" height="400" width="600">
+		Your brouwser not support canvas.
+	</canvas>
+</body>
+</html>
